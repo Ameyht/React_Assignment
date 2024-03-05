@@ -1,0 +1,252 @@
+import React, { useState } from "react";
+import {
+  TextField,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
+
+const getMuiTheme = createTheme({
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          height: "40px",
+          width: "30rem",
+          fontSize: "0.75rem", // Adjust the font size as needed
+          padding: "6px 10px", // Adjust the padding as needed
+        },
+      },
+    },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          height: "20px",
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          height: "5px",
+          borderBottom: "0px",
+          padding: "4px",
+          paddingLeft: "0px",
+          fontFamily: "Georgia, serif",
+          fontSize: "large",
+        },
+      },
+    },
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          height: "20px",
+          paddingTop: "0px",
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          paddingBottom: "10px",
+        },
+      },
+    },
+  },
+});
+
+function RegisterForm() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    role: "",
+    status: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    console.log(formData);
+  };
+
+  return (
+    <ThemeProvider theme={getMuiTheme}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          margin: "0 auto",
+          // paddingRight: "17rem",
+          height: "50px",
+        }}
+      >
+        <Table>
+          <TableBody>
+            {/* First Name */}
+            <TableRow>
+              <TableCell
+                sx={{
+                  paddingTop: "20px",
+                }}
+              >
+                <label htmlFor="first_name">First Name</label>
+              </TableCell>
+              <TableCell>
+                <TextField
+                  id="first_name"
+                  size="small"
+                  label="First Name"
+                  name="first_name"
+                  variant="outlined"
+                  required
+                  sx={{
+                    "@media (max-width:600px)": {
+                      display: "block",
+                    },
+                  }}
+                />
+              </TableCell>
+            </TableRow>
+            {/* Last Name */}
+            <TableRow>
+              <TableCell sx={{ paddingTop: "20px" }}>
+                <label htmlFor="lastName">Last Name</label>
+              </TableCell>
+              <TableCell>
+                <TextField
+                  label="Last Name"
+                  size="small"
+                  variant="outlined"
+                  name="lastName"
+                  required
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </TableCell>
+            </TableRow>
+            {/* Email */}
+            <TableRow>
+              <TableCell sx={{ paddingTop: "20px" }}>
+                <label htmlFor="email">Email</label>
+              </TableCell>
+              <TableCell>
+                <TextField
+                  label="Email"
+                  size="small"
+                  variant="outlined"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </TableCell>
+            </TableRow>
+            {/* Phone */}
+            <TableRow>
+              <TableCell sx={{ paddingTop: "20px" }}>
+                <label htmlFor="phone">Phone</label>
+              </TableCell>
+
+              <TableCell>
+                <TextField
+                  label="Phone"
+                  variant="outlined"
+                  size="small"
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+              </TableCell>
+            </TableRow>
+            {/*  Role */}
+            <TableRow>
+              <TableCell sx={{ paddingTop: "20px" }}>
+                <label htmlFor="Role">Role</label>
+              </TableCell>
+
+              <TableCell>
+                <TextField
+                  label="Role"
+                  variant="outlined"
+                  size="small"
+                  name="role"
+                  value={formData.role}
+                  onChange={handleChange}
+                />
+              </TableCell>
+            </TableRow>
+            {/*  Password */}
+            <TableRow>
+              <TableCell sx={{ paddingTop: "20px" }}>
+                <label htmlFor="password">Password</label>
+              </TableCell>
+
+              <TableCell>
+                <TextField
+                  label="Password"
+                  variant="outlined"
+                  size="small"
+                  margin="normal"
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </TableCell>
+            </TableRow>
+            {/* Confirm Password */}
+            <TableRow>
+              <TableCell sx={{ paddingTop: "20px" }}>
+                <label htmlFor="confirmPassword">Confirm Password</label>
+              </TableCell>
+
+              <TableCell>
+                <TextField
+                  label="Confirm Password"
+                  variant="outlined"
+                  size="small"
+                  margin="normal"
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                />
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell colSpan={2} align="left">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  style={{ marginTop: "10px" }}
+                >
+                  Save
+                </Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </form>
+    </ThemeProvider>
+  );
+}
+
+export default RegisterForm;

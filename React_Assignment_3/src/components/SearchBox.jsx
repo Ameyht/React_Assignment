@@ -1,16 +1,7 @@
 import React from "react";
 import useUserStore from "./userStore";
 
-const SearchBox = ({ users, updateSearch }) => {
-  const handleChange = (event) => {
-    const searchQuery = event.target.value.toLowerCase();
-    // Filter users based on search query
-    const filteredUsers = users.filter((user) =>
-      user.firstName.toLowerCase().includes(searchQuery)
-    );
-    // Call updateSearch function with filtered users
-    updateSearch(filteredUsers);
-  };
+const SearchBox = () => {
   return (
     <div className="flex justify-between items-center mx-2 p-1 bg-gray-200 border rounded-1">
       <svg
@@ -29,7 +20,6 @@ const SearchBox = ({ users, updateSearch }) => {
         type="text"
         className="hidden md:flex h-5 mx-2 w-40 bg-gray-200 "
         placeholder="Search here..."
-        onChange={handleChange}
         alt="search"
       />
       {/* </span> */}

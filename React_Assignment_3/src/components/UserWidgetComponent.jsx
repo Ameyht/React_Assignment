@@ -103,11 +103,11 @@ const UserWidgetComponent = () => {
         <div className="userboard flex flex-col bg-white min-h-16 h-auto md:min-h-[30rem] md:h-auto mx-2 md:mx-4">
           <div className="left flex justify-between h-14 ">
             <div className="px-3 col-3 h-[100%] flex items-center text-nowrap">
-              <SortBy users={users} updateSearch={updateSearch} />
-              <FilterBy users={users} updateSearch={updateSearch} />
+              <SortBy />
+              <FilterBy />
             </div>
             <div className="col-6 flex justify-end items-center">
-              <SearchBox users={users} updateSearch={updateSearch} />
+              <SearchBox />
             </div>
           </div>
           {/* The main User rendering Logic*/}
@@ -139,11 +139,11 @@ const UserWidgetComponent = () => {
         <div className="userboard flex flex-col bg-white min-h-16 h-auto md:min-h-[30rem] md:h-auto mx-2 md:mx-4">
           <div className="left flex justify-between h-14 ">
             <div className="px-3 col-3 h-[100%] flex items-center text-nowrap">
-              <SortBy users={users} updateSearch={updateSearch} />
-              <FilterBy users={users} updateSearch={updateSearch} />
+              <SortBy />
+              <FilterBy />
             </div>
             <div className="col-6 flex justify-end items-center">
-              <SearchBox users={users} updateSearch={updateSearch} />
+              <SearchBox />
             </div>
           </div>
           {/* The main User rendering Logic*/}

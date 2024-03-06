@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-export default function FilterBy({ users, updateSearch }) {
+export default function FilterBy() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -11,34 +11,6 @@ export default function FilterBy({ users, updateSearch }) {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleAction = (action) => {
-    // const action = event.target.value;
-    console.log("reached handleAction of Filterby with action ==" + action);
-    if (action === "user") {
-      const filteredUsers = users.filter((user) =>
-        user.role.toLowerCase().includes(action)
-      );
-      console.log("filteredUsers by user : " + filteredUsers);
-      // Call updateSearch function with filtered users
-      updateSearch(filteredUsers);
-      handleClose();
-    } else if (action === "admin") {
-      const filteredUsers = users.filter((user) =>
-        user.role.toLowerCase().includes(action)
-      );
-      console.log("filteredUsers by admin : " + filteredUsers);
-      // Call updateSearch function with filtered users
-      updateSearch(filteredUsers);
-    } else {
-      const filteredUsers = users.filter((user) =>
-        user.role.toLowerCase().includes(action)
-      );
-      console.log("filteredUsers by admin : " + filteredUsers);
-      // Call updateSearch function with filtered users
-      updateSearch(filteredUsers);
-    }
   };
 
   return (
@@ -69,14 +41,13 @@ export default function FilterBy({ users, updateSearch }) {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        onChange={(event) => handleAction(event)}
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={() => handleAction("user")}>User</MenuItem>
-        <MenuItem onClick={() => handleAction("admin")}>Admin</MenuItem>
-        <MenuItem onClick={() => handleAction("agent")}>Agent</MenuItem>
+        <MenuItem>User</MenuItem>
+        <MenuItem>Admin</MenuItem>
+        <MenuItem>Agent</MenuItem>
       </Menu>
     </div>
   );

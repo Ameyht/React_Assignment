@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-export default function SortBy({ users, updateSearch }) {
+export default function SortBy() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -11,43 +11,6 @@ export default function SortBy({ users, updateSearch }) {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleAction = (action) => {
-    if (action === "AtoZ") {
-      const filteredUsers = users.slice().sort((a, b) => {
-        // Convert both first names to lowercase for case-insensitive sorting
-        const firstNameA = a.firstName.toLowerCase();
-        const firstNameB = b.firstName.toLowerCase();
-
-        if (firstNameA < firstNameB) {
-          return -1; // If firstNameA should appear before firstNameB, return -1
-        }
-        if (firstNameA > firstNameB) {
-          return 1; // If firstNameA should appear after firstNameB, return 1
-        }
-        return 0; // If firstNameA and firstNameB are equal, return 0
-      });
-
-      updateSearch(filteredUsers);
-      handleClose();
-    } else if ((action = "ZtoA")) {
-      const filteredUsers = users.slice().sort((a, b) => {
-        const firstnameA = a.firstName.toLowerCase();
-        const firstnameB = b.firstName.toLowerCase();
-
-        if (firstnameA > firstnameB) {
-          return -1;
-        }
-        if (firstnameA < firstnameB) {
-          return 1;
-        }
-        return 0;
-      });
-
-      updateSearch(filteredUsers);
-      handleClose();
-    }
   };
 
   return (
@@ -81,14 +44,10 @@ export default function SortBy({ users, updateSearch }) {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={() => handleAction("lastupdated")}>
-          Last Updates
-        </MenuItem>
-        <MenuItem onClick={() => handleAction("createdDate")}>
-          Created Date
-        </MenuItem>
-        <MenuItem onClick={() => handleAction("AtoZ")}>A to Z</MenuItem>
-        <MenuItem onClick={() => handleAction("ZtoA")}>Z to A</MenuItem>
+        <MenuItem>Last Updates</MenuItem>
+        <MenuItem>Created Date</MenuItem>
+        <MenuItem>A to Z</MenuItem>
+        <MenuItem>Z to A</MenuItem>
       </Menu>
     </div>
   );
